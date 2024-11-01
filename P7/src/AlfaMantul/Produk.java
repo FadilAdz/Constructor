@@ -31,7 +31,7 @@ public class Produk {
     }
 
     public void displayInfo(){
-        System.out.println("Toko Indo April");
+        System.out.println("Toko Alfa Mantul");
         System.out.println("Nama Produk : " + namaProduk);
         System.out.println("Harga Produk : " + harga);
         System.out.println("Jumlah Stok : " + jumlahStok);
