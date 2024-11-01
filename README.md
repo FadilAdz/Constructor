@@ -8,6 +8,7 @@
 
 <br> <br>
 
+
 ### File <b>main.java</b>
 
 ``` java
@@ -106,7 +107,197 @@ Metode ```tambahProduk``` pada objek ```keranjang``` menambahkan produk beserta 
 keranjang.displayKeranjang();
 ```
 
-Metode ```displayKeranjang``` menampilkan semua produk yang telah ditambahkan ke keranjang belanja beserta detailnya, seperti nama produk, harga, kuantitas, dan total harga.
+Metode ```displayKeranjang``` menampilkan semua produk yang telah ditambahkan ke keranjang belanja beserta detailnya, seperti nama produk, harga, kuantitas, dan total harga. <br> <br> <br> <br>
+
+
+### File <b>Produk.java</b>
+
+``` java
+package AlfaMantul;
+public class Produk {
+    private String namaProduk;
+    private int harga;
+    private int jumlahStok;
+
+    public Produk(String namaProduk, int harga, int jumlahStok) {
+        this.namaProduk = namaProduk;
+        this.harga = harga;
+        this.jumlahStok = jumlahStok;
+    }
+
+    // Setter NamaProduk
+    public String getNamaProduk() {
+        return namaProduk;
+    }
+
+    // Setter Harga
+    public int getHarga() {
+        return harga;
+    }
+
+    // Setter JumlahStok
+    public int getJumlahStok() {
+        return jumlahStok;
+    }
+
+
+    public void kurangiStok(int jumlah) {
+        this.jumlahStok -= jumlah;
+    }
+
+    public void displayInfo(){
+        System.out.println("Toko Alfa Mantul");
+        System.out.println("Nama Produk : " + namaProduk);
+        System.out.println("Harga Produk : " + harga);
+        System.out.println("Jumlah Stok : " + jumlahStok);
+    }
+}
+```
+
+
+### File <b>elektronik.java</b>
+
+``` java
+package AlfaMantul;
+public class elektronik extends Produk {
+    private int garansi;
+
+    public elektronik (String namaProduk, int harga, int jumlahStok, int garansi) {
+        super(namaProduk, harga, jumlahStok);
+        this.garansi = garansi;
+    }
+
+    // Setter dan Getter Garansi
+    public int getGaransi() {
+        return garansi;
+    }
+
+    public void setGaransi(int garansi) {
+        this.garansi = garansi;
+    }
+
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("Garansi : " + this.garansi + " tahun");
+
+    }
+}
+```
+
+
+### File <b>pakaian.java</b>
+
+``` java
+package AlfaMantul;
+
+public class pakaian extends Produk {
+    private String ukuran;
+    private String warna;
+
+    public pakaian (String namaProduk, int harga,int jumlahStok, String ukuran, String warna) {
+        super(namaProduk, harga, jumlahStok);
+        this.ukuran = ukuran;
+        this.warna = warna;
+    }
+
+    // Setter Ukuran
+    public String getUkuran() {
+        return ukuran;
+    }
+
+    // Setter Warna
+    public String getWarna() {
+        return warna;
+    }
+
+    @Override
+    public void displayInfo(){
+        super.displayInfo();
+        System.out.println("Ukuran : " + this.ukuran);
+        System.out.println("Warna : " + this.warna);
+    }
+
+}
+```
+
+
+### File <b>makanan.java</b>
+
+``` java
+package AlfaMantul;
+
+import java.util.Date;
+
+public class makanan extends Produk {
+    private Date exp;
+
+    public makanan(String namaProduk,int harga,int jumlahStok, Date exp) {
+        super(namaProduk, harga, jumlahStok);
+        this.exp = exp;
+    }
+
+    @Override
+    public void displayInfo(){
+        super.displayInfo();
+        System.out.println("Tanggal Exp : " + this.exp);
+    }
+
+}
+```
+
+
+### File <b>keranjangBelanja.java</b>
+
+``` java
+package AlfaMantul;
+import java.util.ArrayList;
+
+public class keranjangBelanja {
+    private ArrayList<Produk> keranjang;
+
+    public keranjangBelanja() {
+        keranjang = new ArrayList<>();
+    }
+
+    public void tambahProduk(Produk p, int jumlah) {
+        if (p.getJumlahStok() >= jumlah) {
+            p.kurangiStok(jumlah);
+            keranjang.add(p);
+            System.out.println("Produk " + p.getNamaProduk() + " ditambahkan sebanyak " + jumlah);
+        } else {
+            System.out.println("Stok tidak mencukupi untuk produk " + p.getNamaProduk());
+        }
+    }
+
+    public int hitungTotalBelanja() {
+        int total = 0;
+        for (Produk item : keranjang) {
+            total += item.getHarga();
+        }
+        return total;
+    }
+
+    public void displayKeranjang() {
+        System.out.println("Isi Keranjang Belanja :");
+        for (Produk item : keranjang) {
+            System.out.println("- " + item.getNamaProduk() + " = Rp" + item.getHarga());
+        }
+        System.out.println("Total Belanja : Rp" + hitungTotalBelanja());
+    }
+}
+```
+
+
+
+
+
+
+
+
+
+
+
 
 
 
