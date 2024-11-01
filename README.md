@@ -38,7 +38,7 @@ public class main {
 <br>
 
 <b>Penjelasan</b> <br>
-1. Deklarasi Paket dan Impor
+1. Deklarasi package dan Impor
 
 ``` java
 package AlfaMantul;
@@ -153,6 +153,103 @@ public class Produk {
     }
 }
 ```
+<br>
+
+<b>Penjelasan</b> <br>
+1. Deklarasi Package
+
+```java
+package AlfaMantul;
+```
+
+Package ```AlfaMantul``` digunakan untuk mengelompokkan kelas ini bersama kelas-kelas lainnya yang berkaitan dalam satu modul atau direktori. <br> <br> <br>
+
+
+2. Kelas ```Produk```
+
+``` java
+public class Produk {
+    // Kode di dalam kelas
+}
+```
+
+Kelas ```Produk``` bersifat ```public```, sehingga dapat diakses oleh kelas lain di luar paket ini. Kelas ini berisi atribut dan metode yang berkaitan dengan informasi dasar produk. <br> <br> <br>
+
+
+3. Atribut (Properti Produk)
+
+``` java
+private String namaProduk;
+private int harga;
+private int jumlahStok;
+```
+
+Atribut ```namaProduk```, ```harga```, dan ```jumlahStok``` masing-masing digunakan untuk menyimpan : <br> <br>
+
+```namaProduk``` : Nama dari produk, misalnya "Laptop" atau "Kaos".<br>
+
+```harga``` : Harga produk dalam bentuk bilangan bulat (integer).<br>
+
+```jumlahStok``` : Jumlah stok produk yang tersedia. <br>
+
+Atribut-atribut ini dideklarasikan sebagai ```private```, yang artinya hanya dapat diakses dari dalam kelas ```Produk``` saja, sehingga tidak bisa diakses langsung oleh kelas luar. <br> <br> <br>
+
+
+4. Konstruktor ```Produk```
+
+``` java
+public Produk(String namaProduk, int harga, int jumlahStok) {
+    this.namaProduk = namaProduk;
+    this.harga = harga;
+    this.jumlahStok = jumlahStok;
+}
+```
+
+Konstruktor ini digunakan untuk menginisialisasi objek ```Produk``` dengan nilai-nilai awal untuk ```namaProduk```, ```harga```, dan ```jumlahStok```. Ketika objek ```Produk``` dibuat, nilai-nilai yang diberikan sebagai parameter akan disimpan ke dalam atribut kelas. <br> <br> <br>
+
+
+5. Metode Getter
+
+``` java
+public String getNamaProduk() {
+    return namaProduk;
+}
+
+public int getHarga() {
+    return harga;
+}
+
+public int getJumlahStok() {
+    return jumlahStok;
+}
+```
+
+Ketiga metode di atas adalah metode "getter", yang berfungsi untuk mengakses nilai dari atribut ```namaProduk```, ```harga```, dan ```jumlahStok```. Metode ini memungkinkan kelas lain untuk mengambil nilai atribut tersebut tanpa perlu mengaksesnya secara langsung. <br> <br> <br>
+
+
+6. Metode ```kurangiStok```
+
+``` java
+public void kurangiStok(int jumlah) {
+    this.jumlahStok -= jumlah;
+}
+```
+
+Metode ```kurangiStok``` digunakan untuk mengurangi jumlah stok produk. Metode ini menerima parameter ```jumlah```, yang kemudian akan dikurangkan dari ```jumlahStok```. Ini berguna, misalnya, ketika ada pembelian produk sehingga stoknya berkurang. <br> <br> <br>
+
+
+7. Metode ```displayInfo```
+
+``` java
+public void displayInfo(){
+    System.out.println("Toko Alfa Mantul");
+    System.out.println("Nama Produk : " + namaProduk);
+    System.out.println("Harga Produk : " + harga);
+    System.out.println("Jumlah Stok : " + jumlahStok);
+}
+```
+
+Metode ```displayInfo``` digunakan untuk menampilkan informasi produk ke layar, termasuk nama toko, nama produk, harga produk, dan jumlah stok yang tersedia. Metode ini memberikan output yang informatif tentang produk ketika dipanggil. <br> <br> <br> <br>
 
 
 ### File <b>elektronik.java</b>
@@ -184,6 +281,84 @@ public class elektronik extends Produk {
     }
 }
 ```
+<br>
+
+1. Deklarasi package
+
+``` java
+package AlfaMantul;
+```
+
+Kelas ```elektronik``` dikelompokkan ke dalam package ```AlfaMantul```, bersama kelas-kelas lain dalam sistem yang sama. <br> <br> <br>
+
+
+2. Kelas elektronik dan Pewarisan
+
+``` java
+public class elektronik extends Produk {
+    // Kode di dalam kelas
+}
+```
+
+Kelas ```elektronik``` dideklarasikan sebagai ```public```, sehingga dapat diakses oleh kelas lain. Kelas ini menggunakan konsep pewarisan (inheritance) dengan kata kunci ```extends```, yang menunjukkan bahwa elektronik adalah turunan dari kelas ```Produk```. Dengan pewarisan ini, kelas ```elektronik``` mewarisi semua atribut dan metode dari kelas ```Produk```, seperti ```namaProduk```, ```harga```, j```umlahStok```, dan metode ```displayInfo```. <br> <br> <br>
+
+
+3. Atribut ```garansi```
+
+``` java
+private int garansi;
+```
+
+Atribut ```garansi``` menyimpan informasi tambahan khusus untuk produk elektronik, yaitu lama garansi dalam tahun. Atribut ini bertipe ```int``` dan bersifat ```private```, yang berarti hanya dapat diakses dalam kelas ```elektronik```. <br> <br> <br>
+
+
+4. Konstruktor ```elektronik```
+
+``` java
+public elektronik (String namaProduk, int harga, int jumlahStok, int garansi) {
+    super(namaProduk, harga, jumlahStok);
+    this.garansi = garansi;
+}
+```
+
+Konstruktor ```elektronik``` digunakan untuk menginisialisasi objek ```elektronik``` dengan nilai-nilai yang diperlukan : <br>
+
+```namaProduk``` : Nama produk elektronik.<br>
+```harga``` : Harga produk elektronik.<br>
+```jumlahStok``` : Jumlah stok produk elektronik. <br>
+```garansi``` : Lama garansi produk dalam tahun. <br> <br>
+
+Kata kunci ```super``` digunakan untuk memanggil konstruktor dari kelas ```Produk```, yang akan menginisialisasi atribut ```namaProduk```, ```harga```, dan ```jumlahStok```. Setelah itu, atribut ```garansi``` diatur sesuai dengan parameter yang diterima. <br> <br> <br>
+
+
+5. Metode Getter dan Setter ```garansi```
+
+``` java
+public int getGaransi() {
+    return garansi;
+}
+
+public void setGaransi(int garansi) {
+    this.garansi = garansi;
+}
+```
+
+```getGaransi``` : Metode ini mengembalikan nilai ```garansi```, yang memungkinkan kelas lain untuk membaca informasi garansi produk elektronik. <br> <br>
+
+```setGaransi``` : Metode ini mengubah nilai ```garansi```, yang memungkinkan pengaturan ulang lama garansi jika dibutuhkan. <br> <br> <br>
+
+
+6. Override Metode ```displayInfo```
+
+``` java
+@Override
+public void displayInfo() {
+    super.displayInfo();
+    System.out.println("Garansi : " + this.garansi + " tahun");
+}
+```
+
+Metode ```displayInfo``` di-override (diubah) dari versi aslinya di kelas ```Produk```. Dengan kata kunci ```@Override```, metode ini akan menambahkan informasi garansi produk elektronik. Metode ini memanggil ```super.displayInfo()``` untuk menampilkan informasi dasar produk dari kelas ```Produk```, lalu menambahkan detail ```garansi``` dengan output ```Garansi : <nilai garansi> tahun```. <br> <br> <br> <br>
 
 
 ### File <b>pakaian.java</b>
