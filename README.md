@@ -395,6 +395,96 @@ public class pakaian extends Produk {
 
 }
 ```
+<br>
+
+1. Deklarasi Package
+
+``` java
+package AlfaMantul;
+```
+
+Package ```AlfaMantul``` digunakan untuk mengelompokkan kelas ```pakaian``` bersama dengan kelas lain dalam proyek yang sama. <br> <br> <br>
+
+
+2. Kelas ```pakaian``` dan ```Pewarisan```
+
+``` java
+public class pakaian extends Produk {
+    // Kode di dalam kelas
+}
+```
+
+Kelas ```pakaian``` adalah subclass dari ```Produk```, yang artinya ```pakaian``` mewarisi semua atribut dan metode dari ```Produk```. Dengan kata kunci ```extends```, kelas ini memperoleh atribut dasar seperti ```namaProduk```, ```harga```, dan ```jumlahStok``` serta metode seperti ```displayInfo``` dari kelas induknya. <br> <br> <br>
+
+
+3. Atribut ```ukuran``` dan ```warna```
+
+``` java
+private String ukuran;
+private String warna;
+```
+
+Kelas ```pakaian``` memiliki dua atribut tambahan : <br>
+
+```ukuran``` : Menyimpan ukuran produk pakaian, misalnya "M", "L", atau "XL". <br>
+```warna``` : Menyimpan warna produk pakaian, misalnya "Hitam" atau "Biru". <br> <br>
+
+Kedua atribut ini bersifat ```private```, sehingga hanya dapat diakses dan diubah melalui metode di dalam kelas ```pakaian```. <br> <br> <br>
+
+
+4. Konstruktor ```pakaian```
+
+``` java
+public pakaian (String namaProduk, int harga, int jumlahStok, String ukuran, String warna) {
+    super(namaProduk, harga, jumlahStok);
+    this.ukuran = ukuran;
+    this.warna = warna;
+}
+```
+
+Konstruktor ```pakaian``` digunakan untuk menginisialisasi objek dengan atribut yang dibutuhkan : <br>
+
+```namaProduk``` : Nama produk pakaian. <br>
+```harga``` : Harga produk. <br>
+```jumlahStok``` : Jumlah stok produk yang tersedia. <br>
+```ukuran``` : Ukuran pakaian. <br>
+```warna``` : Warna pakaian. <br> <br>
+
+Konstruktor ini memanggil konstruktor kelas ```Produk``` dengan ```super```, yang menginisialisasi ```namaProduk```, ```harga```, dan ```jumlahStok```, sementara ```ukuran``` dan ```warna``` diatur di dalam konstruktor ```pakaian``` sendiri. <br> <br> <br>
+
+
+5. Metode Getter ukuran dan warna
+
+``` java
+public String getUkuran() {
+    return ukuran;
+}
+
+public String getWarna() {
+    return warna;
+}
+```
+
+Metode ini adalah getter yang mengembalikan nilai ```ukuran``` dan ```warna``` : <br>
+
+```getUkuran``` : Mengembalikan ukuran pakaian. <br>
+```getWarna``` : Mengembalikan warna pakaian. <br> <br>
+
+Metode ini memungkinkan atribut ```ukuran``` dan ```warna``` diakses dari luar kelas ```pakaian```. <br> <br> <br>
+
+
+6. Override Metode ```displayInfo```
+
+``` java
+@Override
+public void displayInfo(){
+    super.displayInfo();
+    System.out.println("Ukuran : " + this.ukuran);
+    System.out.println("Warna : " + this.warna);
+}
+```
+
+Metode ```displayInfo``` di-override dari kelas ```Produk```. Dengan ```@Override```, metode ini memanggil ```super.displayInfo()``` untuk menampilkan informasi dasar dari ```Produk```, seperti ```namaProduk```, ```harga```, dan ```jumlahStok```. Setelah itu, informasi ```ukuran``` dan ```warna``` ditambahkan untuk melengkapi deskripsi produk pakaian. <br> <br> <br> <br> 
 
 
 ### File <b>makanan.java</b>
@@ -420,6 +510,68 @@ public class makanan extends Produk {
 
 }
 ```
+<br>
+
+1. Deklarasi Package dan Impor Kelas
+
+``` java
+package AlfaMantul;
+import java.util.Date;
+```
+
+Kode ini berada dalam package ```AlfaMantul```, yang mengelompokkan kelas ```makanan``` bersama kelas-kelas lain dalam proyek ini. Kelas ```Date``` diimpor dari pustaka Java, digunakan untuk menyimpan data tanggal kedaluwarsa produk makanan. <br> <br> <br>
+
+
+2. Kelas ```makanan``` dan Pewarisan
+
+``` java
+public class makanan extends Produk {
+    // Kode di dalam kelas
+}
+```
+
+Kelas ```makanan``` merupakan subclass dari kelas ```Produk```. Dengan kata kunci ```extends```, kelas ini mewarisi semua atribut dan metode dari kelas ```Produk```, seperti ```namaProduk```, ```harga```, dan ```jumlahStok```, serta metode ```displayInfo```. <br> <br> <br>
+
+
+3. Atribut ```exp```
+
+``` java
+private Date exp;
+```
+
+Atribut ```exp``` adalah variabel bertipe ```Date``` yang menyimpan tanggal kedaluwarsa (expired) produk makanan. Atribut ini bersifat ```private```, sehingga hanya dapat diakses melalui metode dalam kelas ```makanan```. <br> <br> <br>
+
+
+4. Konstruktor ```makanan```
+
+``` java
+public makanan(String namaProduk, int harga, int jumlahStok, Date exp) {
+    super(namaProduk, harga, jumlahStok);
+    this.exp = exp;
+}
+```
+
+Konstruktor ```makanan``` digunakan untuk menginisialisasi objek ```makanan``` dengan atribut yang diperlukan : <br> <br>
+
+```namaProduk``` : Nama produk makanan. <br>
+```harga``` : Harga produk. <br>
+```jumlahStok``` : Jumlah stok produk yang tersedia. <br>
+```exp``` : Tanggal kedaluwarsa produk. <br> <br>
+
+Kata kunci ```super``` digunakan untuk memanggil konstruktor kelas ```Produk```, yang menginisialisasi ```namaProduk```, ```harga```, dan ```jumlahStok```. Setelah itu, atribut ```exp``` diatur menggunakan nilai ```Date``` yang diberikan sebagai parameter. <br> <br> <br>
+
+
+5. Override Metode ```displayInfo```
+
+``` java
+@Override
+public void displayInfo(){
+    super.displayInfo();
+    System.out.println("Tanggal Exp : " + this.exp);
+}
+```
+
+Metode ```displayInfo``` di-override dari kelas ```Produk``` untuk menampilkan informasi tambahan mengenai tanggal kedaluwarsa. Dengan memanggil ```super.displayInfo()```, metode ini menampilkan informasi dasar produk seperti ```namaProduk```, ```harga```, dan ```jumlahStok```, kemudian menambahkan detail ```Tanggal Exp``` yang menunjukkan tanggal kedaluwarsa produk makanan. <br> <br> <br> <br>
 
 
 ### File <b>keranjangBelanja.java</b>
@@ -462,26 +614,86 @@ public class keranjangBelanja {
     }
 }
 ```
+<br>
+
+1. Deklarasi Package dan Impor Kelas
+
+``` java
+package AlfaMantul;
+import java.util.ArrayList;
+```
+
+Kelas ```keranjangBelanja``` berada dalam paket ```AlfaMantul```, dan kelas ```ArrayList``` diimpor dari pustaka Java untuk menyimpan daftar produk dalam bentuk list dinamis. <br> <br> <br>
 
 
+2. Deklarasi Kelas ```keranjangBelanja``` dan Atribut ```keranjang```
+
+``` java
+public class keranjangBelanja {
+    private ArrayList<Produk> keranjang;
+}
+```
+
+Kelas ```keranjangBelanja``` memiliki atribut ```keranjang```, yang merupakan ```ArrayList``` berisi objek ```Produk```. Dengan deklarasi ```private```, atribut ini hanya dapat diakses dalam kelas ```keranjangBelanja```. <br> <br> <br>
 
 
+3. Konstruktor ```keranjangBelanja```
+
+``` java
+public keranjangBelanja() {
+    keranjang = new ArrayList<>();
+}
+```
+
+Konstruktor ini menginisialisasi atribut ```keranjang``` sebagai objek ```ArrayList```, siap untuk menyimpan produk-produk yang akan ditambahkan. <br> <br> <br>
 
 
+4. Metode ```tambahProduk```
+
+``` java
+public void tambahProduk(Produk p, int jumlah) {
+    if (p.getJumlahStok() >= jumlah) {
+        p.kurangiStok(jumlah);
+        keranjang.add(p);
+        System.out.println("Produk " + p.getNamaProduk() + " ditambahkan sebanyak " + jumlah);
+    } else {
+        System.out.println("Stok tidak mencukupi untuk produk " + p.getNamaProduk());
+    }
+}
+```
+
+Metode ini digunakan untuk menambahkan produk ```p``` ke dalam keranjang dengan jumlah tertentu : <br> <br> 
+
+Validasi Stok : Metode ini memeriksa apakah stok produk mencukupi untuk jumlah yang diminta. Jika stok mencukupi, stok produk dikurangi dengan ```kurangiStok```, lalu produk ditambahkan ke ```keranjang```. <br>
+
+Pesan Kesuksesan atau Kegagalan : Jika produk berhasil ditambahkan, pesan konfirmasi ditampilkan. Jika stok tidak mencukupi, pesan peringatan muncul.<br> <br> <br>
 
 
+5. Metode ```hitungTotalBelanja```
+
+``` java
+public int hitungTotalBelanja() {
+    int total = 0;
+    for (Produk item : keranjang) {
+        total += item.getHarga();
+    }
+    return total;
+}
+```
+
+Metode ini menghitung total belanja dalam keranjang dengan menjumlahkan harga setiap produk yang ada di dalam ```keranjang```. Nilai total dikembalikan dalam bentuk integer. <br> <br> <br>
 
 
+6. Metode ```displayKeranjang```
 
+``` java
+public void displayKeranjang() {
+    System.out.println("Isi Keranjang Belanja :");
+    for (Produk item : keranjang) {
+        System.out.println("- " + item.getNamaProduk() + " = Rp" + item.getHarga());
+    }
+    System.out.println("Total Belanja : Rp" + hitungTotalBelanja());
+}
+```
 
-
-
-
-
-
-
-
-
-
-
-
+Metode ini digunakan untuk menampilkan daftar produk di keranjang beserta total harga belanja. Setiap produk dalam ```keranjang``` ditampilkan dengan nama dan harganya, diikuti dengan total keseluruhan yang dihitung melalui ```hitungTotalBelanja```.
